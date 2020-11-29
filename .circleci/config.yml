@@ -15,6 +15,8 @@ jobs:
       - checkout
       - node/install-packages:
         app-dir: ./angular-nini
+      - setup:
+        - npm install -g  @angular/cli
       - run:
           app-dir: ./angular-nini
-          command: cd ./angular-nini && npm install -g  @angular/cli && npm run test
+          command: cd ./angular-nini  && npm run test
