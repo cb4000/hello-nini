@@ -58,8 +58,8 @@ jobs:
       - run:
           command: npm build
       - run:
-          command: ls
+          command: ls angular-nini
       - run:
-          command: cp -R .angular-nini/dist/angular-nini ./public
+          command: ls angular-nini/dist
       - run:
-          command: ls ..
+          command: cp -R angular-nini/dist/angular-nini ./public
