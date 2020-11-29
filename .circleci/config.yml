@@ -8,9 +8,7 @@ workflows:
       - angular-test:
           pre-steps:
             - run:
-                command: export NG_CLI_ANALYTICS=ci && sudo  -E npm install -g @angular/cli  
-            - run:
-                comamnd: export NG_CLI_ANALYTICS=ci && sudo  -E npm install --save-dev @angular-devkit/build-angular
+                command: export NG_CLI_ANALYTICS=ci && sudo  -E npm install -g @angular/cli  && && sudo  -E npm install --save-dev @angular-devkit/build-angular
 jobs:
 
   test:
