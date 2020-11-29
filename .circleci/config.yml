@@ -7,16 +7,18 @@ workflows:
     jobs:
       - angular-test
 jobs:
-  angular-test:
+  setup:
     executor:
       name: node/default
       tag: '13.14'
     steps:
+      - npm install -g  @angular/cli
+  angular-test:
+    executor:
+      name: node/default
+      tag: '13.14'
+    
+    steps:
       - checkout
-      - node/install-packages:
-        app-dir: ./angular-nini
-      - setup:
-        - npm install -g  @angular/cli
       - run:
-          app-dir: ./angular-nini
           command: cd ./angular-nini  && npm run test
