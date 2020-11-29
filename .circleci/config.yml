@@ -57,3 +57,9 @@ jobs:
           command: sudo  -E npm install -g @angular/cli  &&  sudo  -E npm install --save-dev @angular-devkit/build-angular 
       - run:
           command: npm build
+      - run:
+          command: ls
+      - run:
+          command: cp -R ./dist/angular-nini ../public
+      - run:
+          command: ls ..
