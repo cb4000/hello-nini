@@ -5,11 +5,12 @@ orbs:
 workflows:
   angular-tests:
     jobs:
-      - getit
-      - angular-test:
-          pre-steps:
-            - run:
-                command: export NG_CLI_ANALYTICS=ci && sudo  -E npm install -g @angular/cli  &&  sudo  -E npm install --save-dev @angular-devkit/build-angular
+      - angular-testb
+    #  - getit
+    #  - angular-test:
+    #      pre-steps:
+    #        - run:
+    #            command: export NG_CLI_ANALYTICS=ci && sudo  -E npm install -g @angular/cli  &&  sudo  -E npm install --save-dev @angular-devkit/build-angular
 jobs:
 
   test:
@@ -42,3 +43,13 @@ jobs:
           command: ls
       - run:
           command: cd ./angular-nini  && npm run test
+
+
+  angular-testb:
+    executor:
+      name: node/default
+      tag: '13.14'  
+    steps:
+      - checkout
+      - run:
+          command: cd ./angular-nini  && export NG_CLI_ANALYTICS=ci && sudo  -E npm install -g @angular/cli  &&  sudo  -E npm install --save-dev @angular-devkit/build-angular &&npm run test
