@@ -5,7 +5,6 @@ orbs:
 workflows:
   angular-tests:
     jobs:
-      - node/test
       - angular-test
 jobs:
   angular-test:
