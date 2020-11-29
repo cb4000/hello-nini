@@ -5,6 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "tsc && node dist/app.js",
+    "get-static": "shx cp -R./angular-nini/dist/* ./public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,4 +1,5 @@
 {
+    "exclude":["angular-nini"],
     "compilerOptions": {
       "module": "commonjs",
       "esModuleInterop": true,
