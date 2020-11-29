@@ -6,8 +6,12 @@ workflows:
   angular-tests:
     jobs:
       - angular-testb
-      - docker-build
-      - publish-latest
+      - docker-build:
+          requires:
+            - angular-testb
+      - publish-latest:
+          requires:
+            - docker-build
     #  - getit
     #  - angular-test:
     #      pre-steps:
@@ -18,7 +22,7 @@ jobs:
   test:
     executor:
       name: node/default
-      tag: '13.14'
+      tag: '13.14' 
     steps:
     #  - checkout
     #  - node/install-packages
