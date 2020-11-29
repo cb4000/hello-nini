@@ -124,5 +124,4 @@ jobs:
       - run:
           name: Publish Docker Image to Docker Hub
           command: |
-            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-            docker push clblount9/hello-nini:latest
+            echo "$DOCKER_PASS" | docker login  --username "$DOCKER_USER" --password-stdin &&  docker push clblount9/hello-nini:latest
