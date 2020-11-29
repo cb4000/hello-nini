@@ -16,8 +16,8 @@ jobs:
       name: node/default
       tag: '13.14'
     steps:
-      - checkout
-      - node/install-packages
+    #  - checkout
+    #  - node/install-packages
       - run:
           command:  cd ./angular-nini  && npm run test
 
