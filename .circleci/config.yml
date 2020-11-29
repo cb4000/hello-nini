@@ -16,7 +16,7 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-          command: npm install --save @angular/cli
+          command: npm install -g @angular/cli
       - run:
           command:  cd ./angular-nini  && npm run test
 
