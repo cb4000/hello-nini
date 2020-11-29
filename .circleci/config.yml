@@ -17,4 +17,4 @@ jobs:
         app-dir: ./angular-nini
       - run:
           app-dir: ./angular-nini
-          command: npm run test
+          command: cd ./angular-nini && npm run test
