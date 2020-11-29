@@ -5,6 +5,7 @@ orbs:
 workflows:
   angular-tests:
     jobs:
+      - getit
       - angular-test:
           pre-steps:
             - run:
@@ -21,6 +22,15 @@ jobs:
       - run:
           command:  cd ./angular-nini  && npm run test
 
+  getit:
+    executor:
+      name: node/default
+      tag: '13.14'
+    
+    steps:
+      - checkout
+
+
   angular-test:
     executor:
       name: node/default
@@ -28,7 +38,6 @@ jobs:
     
     steps:
     
-      - checkout
       - node/install-packages
       - run:
           command: ls
