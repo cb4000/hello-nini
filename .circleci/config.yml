@@ -10,7 +10,7 @@ workflows:
             - run:
                 command: export NG_CLI_ANALYTICS=ci && sudo  -E npm install -g @angular/cli  
             - run:
-                comamnd: npm install
+                comamnd: export NG_CLI_ANALYTICS=ci && sudo  -E npm install --save-dev @angular-devkit/build-angular
 jobs:
 
   test:
