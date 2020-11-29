@@ -5,13 +5,7 @@ orbs:
 workflows:
   angular-tests:
     jobs:
-      - angular-testb
-      - docker-build:
-          requires:
-            - angular-testb
-      - publish-latest:
-          requires:
-            - docker-build
+      - angular-testc
     #  - getit
     #  - angular-test:
     #      pre-steps:
@@ -61,6 +55,13 @@ jobs:
       - run:
           name: Build Docker image
           command: docker build -t  clblount9/hello-nini:latest .
+      - run:
+          name: Archive Docker image
+          command: docker save -o image.tar $IMAGE_NAME
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./image.tar
 
   publish-latest:
     environment:
@@ -94,3 +95,32 @@ jobs:
           command: cp -R angular-nini/dist/angular-nini ./public
       - run:
           command: ls public
+
+  angular-testc:
+    executor:
+      name: node/default
+      tag: '13.14'  
+    steps:
+      - checkout
+      - run:
+          command: cd ./angular-nini  && export NG_CLI_ANALYTICS=ci 
+      - run:
+          command: cd ./angular-nini  && sudo -E npm install -g @angular/cli  &&  sudo  -E npm install --save-dev @angular-devkit/build-angular 
+      - run:
+          command: cd ./angular-nini  && npm  run-script build
+      - run:
+          command: ls angular-nini
+      - run:
+          command: ls angular-nini/dist/angular-nini
+      - run:
+          command: cp -R angular-nini/dist/angular-nini ./public
+      - run:
+          command: ls public
+      - run:
+          name: Build Docker image
+          command: docker build -t  clblount9/hello-nini:latest .
+      - run:
+          name: Publish Docker Image to Docker Hub
+          command: |
+            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+            docker push clblount9/hello-nini:latest
