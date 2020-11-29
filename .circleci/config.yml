@@ -116,6 +116,8 @@ jobs:
           command: cp -R angular-nini/dist/angular-nini ./public
       - run:
           command: ls public
+      - setup_remote_docker:
+          version: 19.03.13
       - run:
           name: Build Docker image
           command: docker build -t  clblount9/hello-nini:latest .
