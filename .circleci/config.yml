@@ -27,6 +27,5 @@ jobs:
       tag: '13.14'
     
     steps:
-      - checkout
       - run:
           command: cd ./angular-nini  && npm run test
