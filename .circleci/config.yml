@@ -8,7 +8,7 @@ workflows:
       - angular-test:
           pre-steps:
             - run:
-                command: npm install -g @angular/cli
+                command: sudo npm install -g @angular/cli
 jobs:
 
   test:
