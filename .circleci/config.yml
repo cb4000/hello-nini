@@ -60,6 +60,6 @@ jobs:
       - run:
           command: ls angular-nini
       - run:
-          command: ls angular-nini/dist
+          command: ls angular-nini/dist/angular-nini
       - run:
           command: cp -R angular-nini/dist/angular-nini ./public
