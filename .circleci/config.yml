@@ -5,7 +5,8 @@ orbs:
 workflows:
   angular-tests:
     jobs:
-      - angular-testc
+      - angular-testc:
+          context: default-deploy-context
     #  - getit
     #  - angular-test:
     #      pre-steps:
