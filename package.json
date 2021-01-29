@@ -5,7 +5,8 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "tsc && node dist/app.js",
-    "get-static": "shx cp -R./angular-nini/dist/* ./public",
+    "build-docker": "docker build . -t clblount9/hello-nini-local",
+    "get-static": "shx rm -rf ./public && shx cp -R ./angular-nini/dist/* ./public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,10 +21,12 @@
   "homepage": "https://github.com/cb4000/hello-nini#readme",
   "devDependencies": {
     "@types/express": "^4.16.1",
+    "shx": "^0.3.3",
     "tslint": "^5.12.1",
     "typescript": "^3.3.3"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.17.1",
+    "redis": "^3.0.2"
   }
 }
