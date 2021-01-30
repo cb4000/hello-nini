@@ -4,11 +4,13 @@
   "description": "From HelloWorld to global metamind.",
   "main": "dist/app.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "tsc . && node dist/app.js",
     "build-docker": "docker build . -t clblount9/hello-nini-local",
     "get-static": "shx rm -rf ./public && shx cp -R ./angular-nini/dist/* ./public",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  }, 
+  "exclude": [
+    "angular-nini"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cb4000/hello-nini.git"
