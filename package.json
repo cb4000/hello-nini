@@ -4,14 +4,12 @@
   "description": "From HelloWorld to global metamind.",
   "main": "dist/app.js",
   "scripts": {
-    "start": "tsc src/app.ts && node dist/app.js",
+    "tsc": "tsc",
+    "start": "tsc   && node dist/app.js",
     "build-docker": "docker build . -t clblount9/hello-nini-local",
     "get-static": "shx rm -rf ./public && shx cp -R ./angular-nini/dist/* ./public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "exclude": [
-    "angular-nini"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cb4000/hello-nini.git"
@@ -24,13 +22,17 @@
   "homepage": "https://github.com/cb4000/hello-nini#readme",
   "devDependencies": {
     "@types/express": "^4.16.1",
+    "@types/socket.io": "^2.1.13",
     "shx": "^0.3.3",
-    "tslint": "^5.12.1",
-    "typescript": "^3.3.3"
+    "tslint": "^6.0.0",
+    "typescript": "^4.1.3"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^3.0.0",
-    "redis": "^3.0.2"
+    "redis": "^3.0.2",
+    "socket.io": "^3.1.0",
+    "ts-node": "~7.0.1",
+    "tslint": "^6.0.0",
+    "typescript": "^4.1.3"
   }
 }
