@@ -29,7 +29,7 @@ io.on("connection", socket => {
   // using `io.emit()`
   socket.on("message", message => {
     console.log("Message Received: " + message);
-   // io.emit("message", { type: "new-message", text: message });
+    io.emit("message", message);
   });
 });
 

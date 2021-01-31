@@ -344,7 +344,7 @@ class AppComponent {
     }
     ngOnInit() {
         this.chat.messages.subscribe((msg) => {
-            this.messagesService.addMessage(msg);
+            this.messagesService.recieveMessage(msg);
         });
     }
 }
@@ -903,7 +903,7 @@ class LiveChatService {
         this.messages = wsService
             .connect()
             .map((response) => {
-            return response;
+            return JSON.parse(response);
         });
     }
     // Our simplified interface for sending
@@ -1111,12 +1111,6 @@ const initialMessages = [
         text: `I\'ll reverse whatever you send me`,
         thread: tRev
     }),
-    new _message_message_model__WEBPACK_IMPORTED_MODULE_2__["Message"]({
-        author: wait,
-        sentAt: moment__WEBPACK_IMPORTED_MODULE_3__().subtract(4, 'minutes').toDate(),
-        text: `I\'ll wait however many seconds you send to me before responding. Try sending '3'`,
-        thread: tWait
-    }),
 ];
 class ChatExampleData {
     static init(messagesService, threadsService, UsersService) {
@@ -1287,9 +1281,12 @@ class MessagesService {
     }
     // an imperative function call to this action stream
     addMessage(message) {
-        this.newMessages.next(message);
+        // this.newMessages.next(message);
         // HACK: REPLACE this SERVICE IT IS DEFUNCT... FOR NOW just bypass
         this.chat.sendMsg(message);
+    }
+    recieveMessage(msg) {
+        this.newMessages.next(msg);
     }
     messagesForThreadUser(thread, user) {
         return this.newMessages

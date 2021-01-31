@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.chat.messages.subscribe((msg: Message) => {
-      this.messagesService.addMessage(msg);
+      this.messagesService.recieveMessage(msg);
     });
   }
 }

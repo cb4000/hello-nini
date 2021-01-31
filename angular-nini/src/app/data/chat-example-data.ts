@@ -44,12 +44,13 @@ const initialMessages: Array<Message> = [
     text: `I\'ll reverse whatever you send me`,
     thread: tRev
   }),
+  /*
   new Message({
     author: wait,
     sentAt: moment().subtract(4, 'minutes').toDate(),
     text: `I\'ll wait however many seconds you send to me before responding. Try sending '3'`,
     thread: tWait
-  }),
+  }),*/
 ];
 
 export class ChatExampleData {

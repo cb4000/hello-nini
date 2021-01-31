@@ -15,7 +15,7 @@ export class LiveChatService {
     this.messages = (wsService
       .connect()
       .map((response: any): any => {
-        return response;
+        return JSON.parse(response);
       }) as Subject<any>);
    }
 

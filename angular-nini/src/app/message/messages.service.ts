@@ -89,11 +89,14 @@ export class MessagesService {
 
   // an imperative function call to this action stream
   addMessage(message: Message): void {
-    this.newMessages.next(message);
+   // this.newMessages.next(message);
     // HACK: REPLACE this SERVICE IT IS DEFUNCT... FOR NOW just bypass
     this.chat.sendMsg(message);
   }
 
+  recieveMessage(msg: Message): any {
+    this.newMessages.next(msg);
+  }
   messagesForThreadUser(thread: Thread, user: User): Observable<Message> {
     return this.newMessages
       .filter((message: Message) => {
