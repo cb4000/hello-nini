@@ -3,6 +3,7 @@ import { Subject, Observable } from 'rxjs';
 import { User } from '../user/user.model';
 import { Thread } from '../thread/thread.model';
 import { Message } from '../message/message.model';
+import { LiveChatService } from '../chat-websocket/live-chat.service';
 
 const initialMessages: Message[] = [];
 
@@ -27,7 +28,7 @@ export class MessagesService {
   create: Subject<Message> = new Subject<Message>();
   markThreadAsRead: Subject<any> = new Subject<any>();
 
-  constructor() {
+  constructor(private chat: LiveChatService) {
     this.messages = this.updates
       // watch the updates and accumulate operations on the messages
       .scan((messages: Message[],
@@ -89,6 +90,8 @@ export class MessagesService {
   // an imperative function call to this action stream
   addMessage(message: Message): void {
     this.newMessages.next(message);
+    // HACK: REPLACE this SERVICE IT IS DEFUNCT... FOR NOW just bypass
+    this.chat.sendMsg(message);
   }
 
   messagesForThreadUser(thread: Thread, user: User): Observable<Message> {

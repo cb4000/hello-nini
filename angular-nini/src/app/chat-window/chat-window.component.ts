@@ -28,7 +28,7 @@ export class ChatWindowComponent implements OnInit {
 
   constructor(public messagesService: MessagesService,
               public threadsService: ThreadsService,
-              public UsersService: UsersService,
+              public usersService: UsersService,
               public el: ElementRef) {
   }
 
@@ -42,7 +42,7 @@ export class ChatWindowComponent implements OnInit {
         this.currentThread = thread;
       });
 
-    this.UsersService.currentUser
+    this.usersService.currentUser
       .subscribe(
         (user: User) => {
           this.currentUser = user;
