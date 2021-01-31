@@ -87,7 +87,7 @@ jobs:
       - run:
           command: cd ./angular-nini  && export NG_CLI_ANALYTICS=ci 
       - run:
-          command: cd ./angular-nini  && sudo -E npm install -g @angular/cli  &&  sudo  -E npm install --save-dev @angular-devkit/build-angular 
+          command: cd ./angular-nini  && sudo -E npm install --dev  
       - run:
           command: cd ./angular-nini  && npm  run-script build
       - run:
