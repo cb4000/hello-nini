@@ -22,6 +22,16 @@
       "dom"
     ]
   },
+  "exclude": [
+    "angular-nini/",
+    ".vscode/",
+    "node_modules/",
+    "dist/",
+    "node_modules",
+    "./node_modules",
+    "./node_modules/*",
+    "./node_modules/@types/node/index.d.ts",
+  ],
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
